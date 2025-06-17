@@ -1,0 +1,150 @@
+
+body {
+    background-image: url('src/images/c15.png');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+
+canvas {
+    background: blanchedalmond;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-width: 90vw;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+#title {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    font-size: 3rem;
+    letter-spacing: 2px;
+}
+
+
+.containerJeu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.containerButtons {
+    color: beige;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+
+
+.containerButtons button {
+    background: linear-gradient(to right, blue, blue); 
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 16px;
+    margin: 8px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.containerButtons button:hover {
+    background: linear-gradient(to right, #0055ff, #0055ff); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.containerButtons button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.containerButtons label {
+    color: black;
+    font-weight: bold;
+}
+
+
+.containerButtons input {
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 4px;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+
+
+#game-status {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: fixed;
+    color: green;
+    padding: 20px 40px;
+    border-radius: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    text-align: end;
+    z-index: 1000;
+}
+
+
+@media screen and (max-width: 768px) {
+    .containerButtons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .containerButtons button {
+        width: 80%;
+        font-size: 18px;
+    }
+
+    .containerButtons input {
+        width: 60px;
+    }
+
+    #title {
+        font-size: 2.5rem;
+    }
+
+    canvas {
+        width: 90vw;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .containerButtons button {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    .containerButtons input {
+        width: 50px;
+    }
+
+    #title {
+        font-size: 2rem;
+    }
+}
