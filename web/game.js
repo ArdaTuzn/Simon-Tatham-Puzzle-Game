@@ -15,17 +15,6 @@
 // can continue to use Module afterwards as well.
 var Module = typeof Module != 'undefined' ? Module : {};
 
-// See https://caniuse.com/mdn-javascript_builtins_object_assign
-
-// --pre-jses are emitted after the Module integration code, so that they can
-// refer to Module (if they choose; they can also define Module)
-// {{PRE_JSES}}
-
-// Sometimes an existing Module object exists with properties
-// meant to overwrite the default module functionality. Here
-// we collect those properties and reapply _after_ we configure
-// the current environment's defaults to avoid having to be so
-// defensive during initialization.
 var moduleOverrides = Object.assign({}, Module);
 
 var arguments_ = [];
@@ -64,13 +53,6 @@ var read_,
     readBinary,
     setWindowTitle;
 
-// Normally we don't log exceptions but instead let them bubble out the top
-// level where the embedding environment (e.g. the browser) can handle
-// them.
-// However under v8 and node we sometimes exit the process direcly in which case
-// its up to use us to log the exception before exiting.
-// If we fix https://github.com/emscripten-core/emscripten/issues/15080
-// this may no longer be needed under node.
 function logExceptionOnExit(e) {
   if (e instanceof ExitStatus) return;
   let toLog = e;
@@ -147,11 +129,6 @@ readAsync = (filename, onload, onerror) => {
     }
   });
 
-  // Without this older versions of node (< v15) will log unhandled rejections
-  // but return 0, which is not normally the desired behaviour.  This is
-  // not be needed with node v15 and about because it is now the default
-  // behaviour:
-  // See https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode
   process['on']('unhandledRejection', function(reason) { throw reason; });
 
   quit_ = (status, toThrow) => {
@@ -198,17 +175,6 @@ if (ENVIRONMENT_IS_SHELL) {
 
   if (typeof quit == 'function') {
     quit_ = (status, toThrow) => {
-      // Unlike node which has process.exitCode, d8 has no such mechanism. So we
-      // have no way to set the exit code and then let the program exit with
-      // that code when it naturally stops running (say, when all setTimeouts
-      // have completed). For that reason we must call `quit` - the only way to
-      // set the exit code - but quit also halts immediately, so we need to be
-      // careful of whether the runtime is alive or not, which is why this code
-      // path looks different than node. It also has the downside that it will
-      // halt the entire program when no code remains to run, which means this
-      // is not friendly for bundling this code into a larger codebase, and for
-      // that reason the "shell" environment is mainly useful for testing whole
-      // programs by themselves, basically.
       if (runtimeKeepaliveCounter) {
         throw toThrow;
       }
@@ -218,29 +184,18 @@ if (ENVIRONMENT_IS_SHELL) {
   }
 
   if (typeof print != 'undefined') {
-    // Prefer to use print/printErr where they exist, as they usually work better.
     if (typeof console == 'undefined') console = /** @type{!Console} */({});
     console.log = /** @type{!function(this:Console, ...*): undefined} */ (print);
     console.warn = console.error = /** @type{!function(this:Console, ...*): undefined} */ (typeof printErr != 'undefined' ? printErr : print);
   }
 
 } else
-
-// Note that this includes Node.js workers when relevant (pthreads is enabled).
-// Node.js workers are detected as a combination of ENVIRONMENT_IS_WORKER and
-// ENVIRONMENT_IS_NODE.
 if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
   if (ENVIRONMENT_IS_WORKER) { // Check worker, not web, since window could be polyfilled
     scriptDirectory = self.location.href;
   } else if (typeof document != 'undefined' && document.currentScript) { // web
     scriptDirectory = document.currentScript.src;
   }
-  // blob urls look like blob:http://site.com/etc/etc and we cannot infer anything from them.
-  // otherwise, slice off the final part of the url to find the script directory.
-  // if scriptDirectory does not contain a slash, lastIndexOf will return -1,
-  // and scriptDirectory will correctly be replaced with an empty string.
-  // If scriptDirectory contains a query (starting with ?) or a fragment (starting with #),
-  // they are removed because they could contain a slash.
   if (scriptDirectory.indexOf('blob:') !== 0) {
     scriptDirectory = scriptDirectory.substr(0, scriptDirectory.replace(/[?#].*/, "").lastIndexOf('/')+1);
   } else {
@@ -252,7 +207,6 @@ if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
   // Differentiate the Web Worker from the Node Worker case, as reading must
   // be done differently.
   {
-// include: web_or_worker_shell_read.js
 
 
   read_ = (url) => {
@@ -593,16 +547,6 @@ var getTempRet0 = () => tempRet0;
 
 
 
-// === Preamble library stuff ===
-
-// Documentation for the public APIs defined in this file must be updated in:
-//    site/source/docs/api_reference/preamble.js.rst
-// A prebuilt local version of the documentation is available at:
-//    site/build/text/docs/api_reference/preamble.js.txt
-// You can also build docs locally as HTML or other formats in site/
-// An online HTML version (which may be of a different version of Emscripten)
-//    is up at http://kripken.github.io/emscripten-site/docs/api_reference/preamble.js.html
-
 var wasmBinary;
 if (Module['wasmBinary']) wasmBinary = Module['wasmBinary'];legacyModuleProp('wasmBinary', 'wasmBinary');
 var noExitRuntime = Module['noExitRuntime'] || true;legacyModuleProp('noExitRuntime', 'noExitRuntime');
@@ -823,10 +767,6 @@ function UTF8ArrayToString(heap, idx, maxBytesToRead) {
     var str = '';
     // If building with TextDecoder, we have already computed the string length above, so test loop end condition against that
     while (idx < endPtr) {
-      // For UTF8 byte structure, see:
-      // http://en.wikipedia.org/wiki/UTF-8#Description
-      // https://www.ietf.org/rfc/rfc2279.txt
-      // https://tools.ietf.org/html/rfc3629
       var u0 = heap[idx++];
       if (!(u0 & 0x80)) { str += String.fromCharCode(u0); continue; }
       var u1 = heap[idx++] & 63;
@@ -850,16 +790,7 @@ function UTF8ArrayToString(heap, idx, maxBytesToRead) {
   return str;
 }
 
-// Given a pointer 'ptr' to a null-terminated UTF8-encoded string in the emscripten HEAP, returns a
-// copy of that string as a Javascript String object.
-// maxBytesToRead: an optional length that specifies the maximum number of bytes to read. You can omit
-//                 this parameter to scan the string until the first \0 byte. If maxBytesToRead is
-//                 passed, and the string at [ptr, ptr+maxBytesToReadr[ contains a null byte in the
-//                 middle, then the string will cut short at that byte index (i.e. maxBytesToRead will
-//                 not produce a string of exact length [ptr, ptr+maxBytesToRead[)
-//                 N.B. mixing frequent uses of UTF8ToString() with and without maxBytesToRead may
-//                 throw JS JIT optimizations off, so it is worth to consider consistently using one
-//                 style or the other.
+
 /**
  * @param {number} ptr
  * @param {number=} maxBytesToRead
@@ -870,18 +801,6 @@ function UTF8ToString(ptr, maxBytesToRead) {
   return ptr ? UTF8ArrayToString(HEAPU8, ptr, maxBytesToRead) : '';
 }
 
-// Copies the given Javascript String object 'str' to the given byte array at address 'outIdx',
-// encoded in UTF8 form and null-terminated. The copy will require at most str.length*4+1 bytes of space in the HEAP.
-// Use the function lengthBytesUTF8 to compute the exact number of bytes (excluding null terminator) that this function will write.
-// Parameters:
-//   str: the Javascript string to copy.
-//   heap: the array to copy to. Each index in this array is assumed to be one 8-byte element.
-//   outIdx: The starting offset in the array to begin the copying.
-//   maxBytesToWrite: The maximum number of bytes this function can write to the array.
-//                    This count should include the null terminator,
-//                    i.e. if maxBytesToWrite=1, only the null terminator will be written and nothing else.
-//                    maxBytesToWrite=0 does not write any bytes to the output, not even the null terminator.
-// Returns the number of bytes written, EXCLUDING the null terminator.
 
 function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
   if (!(maxBytesToWrite > 0)) // Parameter maxBytesToWrite is not optional. Negative values, 0, null, undefined and false each don't write out any bytes.
@@ -890,9 +809,6 @@ function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
   var startIdx = outIdx;
   var endIdx = outIdx + maxBytesToWrite - 1; // -1 for string null terminator.
   for (var i = 0; i < str.length; ++i) {
-    // Gotcha: charCodeAt returns a 16-bit word that is a UTF-16 encoded code unit, not a Unicode code point of the character! So decode UTF16->UTF32->UTF8.
-    // See http://unicode.org/faq/utf_bom.html#utf16-3
-    // For UTF8 byte structure, see http://en.wikipedia.org/wiki/UTF-8#Description and https://www.ietf.org/rfc/rfc2279.txt and https://tools.ietf.org/html/rfc3629
     var u = str.charCodeAt(i); // possibly a lead surrogate
     if (u >= 0xD800 && u <= 0xDFFF) {
       var u1 = str.charCodeAt(++i);
@@ -938,8 +854,6 @@ function stringToUTF8(str, outPtr, maxBytesToWrite) {
 function lengthBytesUTF8(str) {
   var len = 0;
   for (var i = 0; i < str.length; ++i) {
-    // Gotcha: charCodeAt returns a 16-bit word that is a UTF-16 encoded code unit, not a Unicode code point of the character! So decode UTF16->UTF32->UTF8.
-    // See http://unicode.org/faq/utf_bom.html#utf16-3
     var u = str.charCodeAt(i); // possibly a lead surrogate
     if (u >= 0xD800 && u <= 0xDFFF) u = 0x10000 + ((u & 0x3FF) << 10) | (str.charCodeAt(++i) & 0x3FF);
     if (u <= 0x7F) ++len;
@@ -1341,30 +1255,12 @@ function addOnPostRun(cb) {
   __ATPOSTRUN__.unshift(cb);
 }
 
-// include: runtime_math.js
-
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/imul
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/clz32
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc
 
 assert(Math.imul, 'This browser does not support Math.imul(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill');
 assert(Math.fround, 'This browser does not support Math.fround(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill');
 assert(Math.clz32, 'This browser does not support Math.clz32(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill');
 assert(Math.trunc, 'This browser does not support Math.trunc(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill');
 
-// end include: runtime_math.js
-// A counter of dependencies for calling run(). If we need to
-// do asynchronous work before running, increment this and
-// decrement it. Incrementing must happen in a place like
-// Module.preRun (used by emcc to add file preloading).
-// Note that you can add dependencies in preRun, even though
-// it happens right before run - run will be postponed until
-// the dependencies are met.
 var runDependencies = 0;
 var runDependencyWatcher = null;
 var dependenciesFulfilled = null; // overridden to take different actions when all run dependencies are fulfilled
@@ -1459,14 +1355,7 @@ function abort(what) {
   ABORT = true;
   EXITSTATUS = 1;
 
-  // Use a wasm runtime error, because a JS error might be seen as a foreign
-  // exception, which means we'd run destructors on it. We need the error to
-  // simply make the program stop.
 
-  // Suppress closure compiler warning here. Closure compiler's builtin extern
-  // defintion for WebAssembly.RuntimeError claims it takes no arguments even
-  // though it can.
-  // TODO(https://github.com/google/closure-compiler/pull/3913): Remove if/when upstream closure gets fixed.
 
   /** @suppress {checkTypes} */
   var e = new WebAssembly.RuntimeError(what);
@@ -1561,11 +1450,6 @@ function getBinary(file) {
 }
 
 function getBinaryPromise() {
-  // If we don't have the binary yet, try to to load it asynchronously.
-  // Fetch has some additional restrictions over XHR, like it can't be used on a file:// url.
-  // See https://github.com/github/fetch/pull/92#issuecomment-140665932
-  // Cordova or Electron apps are typically loaded from a file:// url.
-  // So use fetch if it is available and the url is not a file, otherwise fall back to XHR.
   if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {
     if (typeof fetch == 'function'
       && !isFileURI(wasmBinaryFile)
@@ -1634,12 +1518,8 @@ function createWasm() {
   // later), so we save Module and check it later.
   var trueModule = Module;
   function receiveInstantiationResult(result) {
-    // 'result' is a ResultObject object which has both the module and instance.
-    // receiveInstance() will swap in the exports (to Module.asm) so they can be called
     assert(Module === trueModule, 'the Module object should not be replaced during async compilation - perhaps the order of HTML elements is wrong?');
     trueModule = null;
-    // TODO: Due to Closure regression https://github.com/google/closure-compiler/issues/3193, the above line no longer optimizes out down to the following line.
-    // When the regression is fixed, can restore the above USE_PTHREADS-enabled path.
     receiveInstance(result['instance']);
   }
 
@@ -1667,10 +1547,6 @@ function createWasm() {
         !isFileURI(wasmBinaryFile) &&
         typeof fetch == 'function') {
       return fetch(wasmBinaryFile, { credentials: 'same-origin' }).then(function(response) {
-        // Suppress closure warning here since the upstream definition for
-        // instantiateStreaming only allows Promise<Repsponse> rather than
-        // an actual Response.
-        // TODO(https://github.com/google/closure-compiler/pull/3913): Remove if/when upstream closure is fixed.
         /** @suppress {checkTypes} */
         var result = WebAssembly.instantiateStreaming(response, info);
 

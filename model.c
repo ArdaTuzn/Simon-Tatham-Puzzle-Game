@@ -21,13 +21,13 @@ struct Env_t {
     int window_width, window_height;
     int button_area_height;
     int margin;
-    
-    // Boutons
+
+    // Buttons
     SDL_Rect reset_btn;
     SDL_Rect quit_btn;
     SDL_Rect undo_btn;
     SDL_Rect redo_btn;
-    SDL_Rect solve_btn;  // Nouveau bouton
+    SDL_Rect solve_btn;  // New button
 };
 
 /* **************************************************************** */
@@ -54,7 +54,7 @@ void renderText(SDL_Renderer* ren, TTF_Font* font, const char* text, SDL_Color c
 
 Env *init(SDL_Window* win, SDL_Renderer* ren, int argc, char* argv[]) {
     Env *env = malloc(sizeof(struct Env_t));
-    if (!env) ERROR("Erreur d'allocation mémoire pour Env\n");
+    if (!env) ERROR("Memory allocation error for Env\n");
 
     env->g = (argc == 2) ? game_load(argv[1]) : game_default();
     env->button_area_height = 60;
@@ -63,7 +63,7 @@ Env *init(SDL_Window* win, SDL_Renderer* ren, int argc, char* argv[]) {
     SDL_GetWindowSize(win, &(env->window_width), &(env->window_height));
 
     env->font = TTF_OpenFont("../res/Arial.ttf", 24);
-    if (!env->font) ERROR("Erreur de chargement de la police: %s\n", TTF_GetError());
+    if (!env->font) ERROR("Font loading error: %s\n", TTF_GetError());
 
     const char* textures_path[6] = {
        "../res/corner.png", "../res/cross.png", "../res/empty.png",
@@ -72,38 +72,38 @@ Env *init(SDL_Window* win, SDL_Renderer* ren, int argc, char* argv[]) {
 
     for (int i = 0; i < 6; i++) {
         env->piece_textures[i] = IMG_LoadTexture(ren, textures_path[i]);
-        if (!env->piece_textures[i]) ERROR("Erreur de chargement de la texture %s: %s\n", textures_path[i], IMG_GetError());
+        if (!env->piece_textures[i]) ERROR("Texture loading error %s: %s\n", textures_path[i], IMG_GetError());
     }
 
-    // Charger l'image de fond
+    // Load background image
     env->background_texture = IMG_LoadTexture(ren, "../res/background.png");
     if (!env->background_texture) {
-        printf("Warning: Impossible de charger l'image de fond (%s)\n", IMG_GetError());
+        printf("Warning: Unable to load background image (%s)\n", IMG_GetError());
     }
 
-    // Configuration des boutons
+    // Configure buttons
     int btn_width = 80;
     int btn_height = 30;
-    
+
     env->reset_btn = (SDL_Rect){env->margin, env->margin, btn_width, btn_height};
     env->quit_btn = (SDL_Rect){env->margin*2 + btn_width, env->margin, btn_width, btn_height};
     env->undo_btn = (SDL_Rect){env->margin*3 + btn_width*2, env->margin, btn_width, btn_height};
     env->redo_btn = (SDL_Rect){env->margin*4 + btn_width*3, env->margin, btn_width, btn_height};
     env->solve_btn = (SDL_Rect){env->margin*5 + btn_width*4, env->margin, btn_width, btn_height}; 
 
-    // Calcul de la taille des cellules
+    // Calculate cell size
     int rows = game_nb_rows(env->g);
     int cols = game_nb_cols(env->g);
-    
+
     int available_width = env->window_width - 2 * env->margin;
     int available_height = env->window_height - env->button_area_height - 2 * env->margin;
-    
+
     int cell_size_width = available_width / cols;
     int cell_size_height = available_height / rows;
-    
+
     env->cell_size = (cell_size_width < cell_size_height) ? cell_size_width : cell_size_height;
-    
-    // Centrage de la grille
+
+    // Center the grid
     env->grid_x = (env->window_width - cols * env->cell_size) / 2;
     env->grid_y = env->button_area_height + (available_height - rows * env->cell_size) / 2;
 
@@ -113,7 +113,7 @@ Env *init(SDL_Window* win, SDL_Renderer* ren, int argc, char* argv[]) {
 /* **************************************************************** */
 
 void render(SDL_Window *win, SDL_Renderer *ren, Env *env) {
-    // Affichage du fond
+    //Display the background
     if (env->background_texture) {
         SDL_Rect bg_rect = {0, 0, env->window_width, env->window_height};
         SDL_RenderCopy(ren, env->background_texture, NULL, &bg_rect);
@@ -122,12 +122,12 @@ void render(SDL_Window *win, SDL_Renderer *ren, Env *env) {
         SDL_RenderClear(ren);
     }
 
-    // Zone des boutons
+    //Buttons zone
     SDL_Rect button_bg = {0, 0, env->window_width, env->button_area_height + 2*env->margin};
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderFillRect(ren, &button_bg);
 
-    // Boutons
+    //Buttons
     SDL_Color btn_color = {200, 200, 200, 255};
     SDL_Color text_color = {0, 0, 0, 255};
     
@@ -144,7 +144,7 @@ void render(SDL_Window *win, SDL_Renderer *ren, Env *env) {
     renderText(ren, env->font, "Redo", text_color, env->redo_btn);
     renderText(ren, env->font, "Solve", text_color, env->solve_btn); 
 
-    // Dessiner les pièces
+    //Draw the pieces
     float scale = 1.0f;
     int offset = (env->cell_size - (env->cell_size * scale)) / 2;
     
@@ -179,7 +179,7 @@ void render(SDL_Window *win, SDL_Renderer *ren, Env *env) {
         }
     }
 
-    // Lignes de grille
+    //Rows
     int grid_width = game_nb_cols(env->g) * env->cell_size;
     int grid_height = game_nb_rows(env->g) * env->cell_size;
 
@@ -193,12 +193,12 @@ void render(SDL_Window *win, SDL_Renderer *ren, Env *env) {
                          env->grid_x + j * env->cell_size, env->grid_y + grid_height);
     }
     
-    // Message de victoire
+    //Victory message
     if (game_won(env->g)) {
         SDL_Color green = {0, 180, 0, 255};
         SDL_Color bg_color = {255, 255, 255, 230};  
         
-        // Positionne des buttons
+        //Button positions
         SDL_Rect msg_bg = {
             env->window_width/2 - 100,
             env->button_area_height + env->margin, 
@@ -253,11 +253,11 @@ bool process(SDL_Window* win, SDL_Renderer* ren, Env* env, SDL_Event* e) {
                     game_redo(env->g);
                 }
                 else if (SDL_PointInRect(&mouse_pos, &env->solve_btn)) {
-                    // Résoudre le jeu
+                    //Solve the game
                     game_solve(env->g);
                 }
                 else {
-                    // Clic sur la grille
+                    //Click to a box
                     int i = (e->button.y - env->grid_y) / env->cell_size;
                     int j = (e->button.x - env->grid_x) / env->cell_size;
                     if (i >= 0 && i < game_nb_rows(env->g) && j >= 0 && j < game_nb_cols(env->g)) {
@@ -272,7 +272,7 @@ bool process(SDL_Window* win, SDL_Renderer* ren, Env* env, SDL_Event* e) {
                 env->window_width = e->window.data1;
                 env->window_height = e->window.data2;
                 
-                // Recalculer la taille des cellules
+                //Calculate the length of the cells
                 int rows = game_nb_rows(env->g);
                 int cols = game_nb_cols(env->g);
                 
@@ -284,7 +284,7 @@ bool process(SDL_Window* win, SDL_Renderer* ren, Env* env, SDL_Event* e) {
                 
                 env->cell_size = (cell_size_width < cell_size_height) ? cell_size_width : cell_size_height;
                 
-                // Recentrer la grille
+                //Recenter the frame
                 env->grid_x = (env->window_width - cols * env->cell_size) / 2;
                 env->grid_y = env->button_area_height + (available_height - rows * env->cell_size) / 2;
             }

@@ -1,12 +1,10 @@
-
-
 /* ******************** global variables ******************** */
 const canvas = document.getElementById('mycanvas');
 const ctx = canvas.getContext('2d');
 let currentGame = null;
 let cellSize = 0;
 
-// Images des pièces
+// Images of pieces
 const pieceImages = {
     0: new Image(), // EMPTY
     1: new Image(), // ENDPOINT
@@ -16,7 +14,7 @@ const pieceImages = {
     5: new Image()  // CROSS
 };
 
-// Chargement des images
+// Load images
 pieceImages[0].src = "src/images/empty.png";
 pieceImages[1].src = "src/images/endpoint.png";
 pieceImages[2].src = "src/images/segment.png";
@@ -40,30 +38,27 @@ function windowLoad() {
     };
 }
 
-// Gestion du redimensionnement du canvas
+// Handle canvas resizing
 function resizeCanvas() {
     if (!currentGame) return;
 
     const nbRows = Module._nb_rows(currentGame);
     const nbCols = Module._nb_cols(currentGame);
 
-    // Utiliser presque toute la largeur/hauteur de la fenêtre
-    const maxCanvasWidth = window.innerWidth * 0.9; // 90% de la largeur
-    const maxCanvasHeight = window.innerHeight * 0.6; // 60% de la hauteur
+    // Use almost the entire window size
+    const maxCanvasWidth = window.innerWidth * 0.9; // 90% width
+    const maxCanvasHeight = window.innerHeight * 0.6; // 60% height
 
-    
     const cellSizeWidth = maxCanvasWidth / nbCols;
     const cellSizeHeight = maxCanvasHeight / nbRows;
 
-    cellSize = Math.min(cellSizeWidth, cellSizeHeight); // Toujours des carrés
+    cellSize = Math.min(cellSizeWidth, cellSizeHeight); // Always use squares
 
     canvas.width = cellSize * nbCols;
     canvas.height = cellSize * nbRows;
 
     drawGame(currentGame); 
 }
-
-
 
 function handleCanvasClick(e) {
     if (!currentGame) return;
@@ -198,7 +193,6 @@ function updateGameStatus() {
         statusDiv.style.display = "none";    
     }
 }
-
 
 /* ******************** bind buttons ******************** */
 document.getElementById('restart').addEventListener('click', restartGame);
