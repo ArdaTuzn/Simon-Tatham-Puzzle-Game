@@ -28,27 +28,25 @@ bool test_game_get_piece_shape() {
 }
 
 bool test_game_get_piece_orientation(void) {
-    // Jeu avec des orientations spécifiques
+    // Game with specific orientations
     direction orientations[] = {EAST, WEST, NORTH, EMPTY, SOUTH, EMPTY, EAST, NORTH, WEST, SOUTH, WEST, EAST, SOUTH, EMPTY, NORTH, NORTH, EAST, WEST, SOUTH, EMPTY};
     uint nb_rows = 4;
     uint nb_cols = 5;
 
-    // Créer un jeu
+    // Create a game
     game g = game_new_ext(nb_rows, nb_cols, NULL, orientations, false);
     if (!g) {
-        fprintf(stderr, "Erreur : échec de la création du jeu\n");
+        fprintf(stderr, "Error: failed to create game\n");
         return false;
     }
 
-    // Vérifier chaque orientation
+    // Check each orientation
     for (uint i = 0; i < nb_rows; i++) {
         for (uint j = 0; j < nb_cols; j++) {
             direction expected = orientations[i * nb_cols + j];
             direction actual = game_get_piece_orientation(g, i, j);
             if (actual != expected) {
-                fprintf(stderr,
-                        "Erreur : orientation incorrecte à (%u, %u). "
-                        "Attendu: %d, Obtenu: %d\n",
+                fprintf(stderr, "Error: incorrect orientation at (%u, %u). Expected: %d, Got: %d\n",
                         i, j, expected, actual);
                 game_delete(g);
                 return false;
@@ -56,7 +54,7 @@ bool test_game_get_piece_orientation(void) {
         }
     }
 
-    // Supprimer le jeu
+    // Delete the game
     game_delete(g);
     return true;
 }
@@ -110,96 +108,27 @@ bool test_game_won(void) {
     game g5 = game_new(shapes, orientations);
     game g6 = game_new_empty_ext(5, 3, true);
     game g7 = game_new_ext(1, 2, shapes2, orientations2, true);
-    if (!g1 || !g2 || !g3 || !g4 || !g5 || !g6 || !g7) {
-        return false;
-    }
 
-    if (!game_won(g1)) {
-        game_delete(g1);
-        game_delete(g2);
-        game_delete(g3);
-        game_delete(g4);
-        game_delete(g5);
-        game_delete(g6);
-        game_delete(g7);
-        return false;
-    }
-    if (game_won(g2)) {
-        game_delete(g1);
-        game_delete(g2);
-        game_delete(g3);
-        game_delete(g4);
-        game_delete(g5);
-        game_delete(g6);
-        game_delete(g7);
-        return false;
-    }
-    if (!game_won(g3)) {
-        game_delete(g1);
-        game_delete(g2);
-        game_delete(g3);
-        game_delete(g4);
-        game_delete(g5);
-        game_delete(g6);
-        game_delete(g7);
-        return false;
-    }
-    if (!game_won(g4)) {
-        game_delete(g1);
-        game_delete(g2);
-        game_delete(g3);
-        game_delete(g4);
-        game_delete(g5);
-        game_delete(g6);
-        game_delete(g7);
-        return false;
-    }
-    if (game_won(g5)) {
-        game_delete(g1);
-        game_delete(g2);
-        game_delete(g3);
-        game_delete(g4);
-        game_delete(g5);
-        game_delete(g6);
-        game_delete(g7);
-        return false;
-    }
-    if (!game_won(g6)) {
-        game_delete(g1);
-        game_delete(g2);
-        game_delete(g3);
-        game_delete(g4);
-        game_delete(g5);
-        game_delete(g6);
-        game_delete(g7);
-        return false;
-    }
-    if (!game_won(g7)) {
-        game_delete(g1);
-        game_delete(g2);
-        game_delete(g3);
-        game_delete(g4);
-        game_delete(g5);
-        game_delete(g6);
-        game_delete(g7);
-        return false;
-    }
-    game_delete(g1);
-    game_delete(g2);
-    game_delete(g3);
-    game_delete(g4);
-    game_delete(g5);
-    game_delete(g6);
-    game_delete(g7);
+    if (!g1 || !g2 || !g3 || !g4 || !g5 || !g6 || !g7) return false;
+
+    if (!game_won(g1)) return false;
+    if (game_won(g2)) return false;
+    if (!game_won(g3)) return false;
+    if (!game_won(g4)) return false;
+    if (game_won(g5)) return false;
+    if (!game_won(g6)) return false;
+    if (!game_won(g7)) return false;
+
+    game_delete(g1); game_delete(g2); game_delete(g3); game_delete(g4);
+    game_delete(g5); game_delete(g6); game_delete(g7);
     return true;
 }
 
 bool test_game_reset_orientation(void) {
     direction orientations[] = {SOUTH, EAST, SOUTH, SOUTH, SOUTH, SOUTH, EAST, SOUTH, SOUTH, SOUTH, SOUTH, EAST, WEST, SOUTH, EAST, SOUTH, EAST, WEST, SOUTH, SOUTH};
     game g = game_new(NULL, orientations);
-    if (!g) {
-        return false;
-    }
+    if (!g) return false;
+
     game_reset_orientation(g);
     for (uint i = 0; i < game_nb_rows(g); i++) {
         for (uint j = 0; j < game_nb_cols(g); j++) {
@@ -216,29 +145,26 @@ bool test_game_reset_orientation(void) {
 bool test_game_shuffle_orientation(void) {
     direction orientations[] = {EAST, WEST, NORTH, EMPTY, SOUTH, EMPTY, EAST, NORTH, WEST, SOUTH, WEST, EAST, SOUTH, EMPTY, NORTH, NORTH, EAST, WEST, SOUTH, EMPTY};
     game g = game_new(NULL, orientations);
-    if (!g) {
-        return false;
-    }
+    if (!g) return false;
+
     for (int attempt = 0; attempt < 3; attempt++) {
         game_shuffle_orientation(g);
         for (uint i = 0; i < game_nb_rows(g); i++) {
             for (uint j = 0; j < DEFAULT_SIZE; j++) {
                 if (game_get_piece_orientation(g, i, j) != orientations[i * game_nb_cols(g) + j]) {
                     game_delete(g);
-                    return true;
+                    return true; // Changed -> test passed
                 }
             }
         }
     }
     game_delete(g);
-    return false;
+    return false; // Never changed -> test failed
 }
 
 bool test_game_print(void) {
     game g = game_default();
-    if (!g) {
-        return false;
-    }
+    if (!g) return false;
     game_print(g);
     game_delete(g);
     return true;
@@ -263,12 +189,11 @@ bool test_game_redo(void) {
     game_undo(g);
     game_redo(g);
     game_redo(g);
-    // On vérifie si la fontion ne fait rien si aucun game_undo n'a pas été fait
+    // Check that the function does nothing if no more undo steps exist
     bool result1 = game_get_piece_orientation(g, 0, 0) == EAST;
     game_undo(g);
     game_play_move(g, 1, 1, 4);
-    // Cette game_redo ne peut pas 'redo' (0,0) annulé par la fonction game_undo car on a joué un nouveau mouveent
-    // avec game_play_move
+    // This redo should not redo the undone move at (0,0) because we played a new move
     game_redo(g);
     bool result2 = game_equal(g, g_default, false);
     game_delete(g);
