@@ -13,7 +13,7 @@ game game_new_ext(uint nb_rows, uint nb_cols, shape* shapes, direction* orientat
     if (shapes != NULL) {
         for (uint i = 0; i < size; i++) {
             if (shapes[i] != EMPTY && shapes[i] != ENDPOINT && shapes[i] != SEGMENT && shapes[i] != CORNER && shapes[i] != TEE && shapes[i] != CROSS) {
-                fprintf(stderr, "La taille du tableau shapes est invalide\n");
+                fprintf(stderr, "The size of the shapes array is invalid\n");
                 exit(EXIT_FAILURE);
             }
             g->s[i] = shapes[i];
@@ -22,7 +22,7 @@ game game_new_ext(uint nb_rows, uint nb_cols, shape* shapes, direction* orientat
     if (orientations != NULL) {
         for (uint i = 0; i < size; i++) {
             if (orientations[i] != NORTH && orientations[i] != EAST && orientations[i] != SOUTH && orientations[i] != WEST) {
-                fprintf(stderr, "La taille du tableau orientations est invalide\n");
+                fprintf(stderr, "The size of the orientations array is invalid\n");
                 exit(EXIT_FAILURE);
             }
             g->d[i] = orientations[i];
@@ -32,28 +32,28 @@ game game_new_ext(uint nb_rows, uint nb_cols, shape* shapes, direction* orientat
 }
 
 game game_new_empty_ext(uint nb_rows, uint nb_cols, bool wrapping) {
-    // Valide les parsamètres d'entrée
+    // Validate input parameters
     if (nb_rows <= 0 || nb_cols <= 0) {
         return NULL;
     }
 
-    // Alloue la mémoire pour la structure du jeu
+    // Allocate memory for the game structure
     game g = malloc(sizeof(game_s));
     if (!g) {
-        fprintf(stderr, "Erreur : échec de l'allocation mémoire dans game_new_empty_ext\n");
+        fprintf(stderr, "Error: memory allocation failed in game_new_empty_ext\n");
         exit(EXIT_FAILURE);
     }
 
     uint size = (nb_rows * nb_cols);
 
-    // Initialise les champs du jeu
+    // Initialize game fields
     g->nb_rows = nb_rows;
     g->nb_columns = nb_cols;
     g->wrapping = wrapping;
     g->undo_stack = queue_new();
     g->redo_stack = queue_new();
 
-    // Alloue la mémoire pour les formes et orientations
+    // Allocate memory for shapes and orientations
     g->s = calloc(size, sizeof(shape));
     g->d = calloc(size, sizeof(direction));
 
@@ -63,11 +63,11 @@ game game_new_empty_ext(uint nb_rows, uint nb_cols, bool wrapping) {
         queue_free(g->undo_stack);
         queue_free(g->redo_stack);
         free(g);
-        fprintf(stderr, "Erreur : échec de l'allocation mémoire pour les formes ou orientations\n");
+        fprintf(stderr, "Error: memory allocation failed for shapes or orientations\n");
         exit(EXIT_FAILURE);
     }
 
-    // Initialise la grille avec les valeurs par défaut
+    // Initialize the grid with default values
     for (uint i = 0; i < size; i++) {
         g->s[i] = EMPTY;
         g->d[i] = NORTH;
@@ -77,7 +77,7 @@ game game_new_empty_ext(uint nb_rows, uint nb_cols, bool wrapping) {
 
 uint game_nb_rows(cgame g) {
     if (!g) {
-        fprintf(stderr, "Invalid jeu\n");
+        fprintf(stderr, "Invalid game\n");
         exit(EXIT_FAILURE);
     }
     return g->nb_rows;
@@ -85,7 +85,7 @@ uint game_nb_rows(cgame g) {
 
 uint game_nb_cols(cgame g) {
     if (!g) {
-        fprintf(stderr, "Invalid jeu\n");
+        fprintf(stderr, "Invalid game\n");
         exit(EXIT_FAILURE);
     }
     return g->nb_columns;
@@ -93,7 +93,7 @@ uint game_nb_cols(cgame g) {
 
 bool game_is_wrapping(cgame g) {
     if (!g) {
-        fprintf(stderr, "Invalid jeu\n");
+        fprintf(stderr, "Invalid game\n");
         exit(EXIT_FAILURE);
     }
     return (g->wrapping);
@@ -101,13 +101,13 @@ bool game_is_wrapping(cgame g) {
 
 void game_undo(game g) {
     if (!g) {
-        fprintf(stderr, "Invalid jeu\n");
+        fprintf(stderr, "Invalid game\n");
         exit(EXIT_FAILURE);
     }
     if (!queue_is_empty(g->undo_stack)) {
-        // Le type de data est tableau d'entiers
+        // The type of data is an array of integers
         int* last_move = queue_pop_tail(g->undo_stack);
-        // On enfile le redo_stack
+        // Push it to the redo stack
         queue_push_tail(g->redo_stack, last_move);
 
         int i = last_move[0];
@@ -123,19 +123,19 @@ void game_undo(game g) {
             }
         }
     } else {
-        printf("Pas de mouvement pour undo.\n");
+        printf("No move to undo.\n");
     }
 }
 
 void game_redo(game g) {
     if (!g) {
-        fprintf(stderr, "Invalid jeu\n");
+        fprintf(stderr, "Invalid game\n");
         exit(EXIT_FAILURE);
     }
     if (!queue_is_empty(g->redo_stack)) {
-        // Le type de data est tableau d'entiers
+        // The type of data is an array of integers
         int* last_move = queue_pop_tail(g->redo_stack);
-        // On enfile le undo_stack
+        // Push it to the undo stack
         queue_push_tail(g->undo_stack, last_move);
 
         int i = last_move[0];
@@ -151,6 +151,6 @@ void game_redo(game g) {
             }
         }
     } else {
-        printf("Pas de mouvement pour redo.\n");
+        printf("No move to redo.\n");
     }
 }
