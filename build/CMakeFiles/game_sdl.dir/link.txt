@@ -1,0 +1,1 @@
+/usr/bin/cc -Wall -std=c99 -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/game_sdl.dir/game_sdl.c.o CMakeFiles/game_sdl.dir/model.c.o -o game_sdl  /opt/homebrew/lib/libSDL2.dylib /opt/homebrew/lib/libSDL2_image.dylib /opt/homebrew/lib/libSDL2_ttf.dylib libgame.a

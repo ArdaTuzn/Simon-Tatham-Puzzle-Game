@@ -1,0 +1,1 @@
+/usr/bin/cc -Wall -std=c99 -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/game_solve.dir/game_solve.c.o -o game_solve  libgame.a
