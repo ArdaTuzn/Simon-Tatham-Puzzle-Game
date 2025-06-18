@@ -6,14 +6,14 @@
 #include <stdlib.h>
 
 void print_help(void) {
-    printf("Commandes disponibles :\n");
-    printf("h : Afficher l'aide\n");
-    printf("r : Reinitialiser la grille (shuffle)\n");
-    printf("q : Quitter\n");
-    printf("c i j : Tourner la pièce en (i,j) dans le sens horaire \n");
-    printf("a i j : Tourner la pièce en (i,j) dans le sens anti-horaire \n");
-    printf("z : Annuler le dernière coup joué \n");
-    printf("y : Revenir au dernière coup annulé \n");
+    printf("Available commands:\n");
+    printf("h : Show help\n");
+    printf("r : Reset the grid (shuffle)\n");
+    printf("q : Quit\n");
+    printf("c i j : Rotate the piece at (i,j) clockwise\n");
+    printf("a i j : Rotate the piece at (i,j) counterclockwise\n");
+    printf("z : Undo the last move\n");
+    printf("y : Redo the last undone move\n");
 }
 
 void usage(int argc, char* argv[]) {
@@ -33,30 +33,33 @@ int main(int argc, char* argv[]) {
     } else {
         g = game_default();
     }
-    // les variables
+
+    // variables
     char command;
     int i, j;
     bool game_over = false;
+
     while (!game_over && !game_won(g)) {
-        // afficher le jeu
+        // display the game
         game_print(g);
         printf("\n");
-        printf("Entrer une commande h pour l'aide\n");
+        printf("Enter a command (h for help):\n");
         scanf(" %c", &command);
+
         if (command == 'h') {
             print_help();
         } else if (command == 'r') {
             game_shuffle_orientation(g);
-            printf("Grille reinitialisee\n");
+            printf("Grid has been reset\n");
         } else if (command == 'q') {
             game_over = true;
-            printf("Vous avez abandonne la partie\n");
+            printf("You have quit the game\n");
         } else if (command == 'z') {
             game_undo(g);
         } else if (command == 'y') {
             game_redo(g);
         } else if (command == 'c' || command == 'a') {
-            printf("Entrez les coordonnes i et j \n");
+            printf("Enter the coordinates i and j:\n");
             scanf("%d %d", &i, &j);
             if (i >= 0 && i < DEFAULT_SIZE && j >= 0 && j < DEFAULT_SIZE) {
                 if (command == 'c') {
@@ -65,19 +68,22 @@ int main(int argc, char* argv[]) {
                     game_play_move(g, i, j, -1);
                 }
             } else {
-                printf("Les coordonnes sont incorrectes\n");
+                printf("Invalid coordinates\n");
             }
         }
     }
-    // afficher la grille
+
+    // display the final grid
     game_print(g);
     printf("\n");
-    // verifier si la partie est gagnee
+
+    // check if the game is won
     if (game_won(g)) {
-        printf("Congratulations: Vous avez gagné la partie \n");
+        printf("Congratulations: You won the game!\n");
     } else if (game_over) {
-        printf("SHAME!, vous avez abandonné la partie \n");
+        printf("You gave up the game. Better luck next time!\n");
     }
+
     game_delete(g);
     return EXIT_SUCCESS;
 }
