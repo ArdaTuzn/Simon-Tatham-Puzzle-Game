@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/ardatuzun/Simon-Tatham-Puzzle-Game
-BuildDirectory: /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build
+SourceDirectory: /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game
+BuildDirectory: /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: huseyindal.rasyonet.local
+Site: Ardas-MacBook-Pro.local
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Darwin-c++
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/opt/homebrew/bin/cmake" "/Users/ardatuzun/Simon-Tatham-Puzzle-Game"
+ConfigureCommand: "/opt/homebrew/bin/cmake" "/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game"
 MakeCommand: /opt/homebrew/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

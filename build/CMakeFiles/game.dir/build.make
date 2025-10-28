@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ardatuzun/Simon-Tatham-Puzzle-Game
+CMAKE_SOURCE_DIR = /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build
+CMAKE_BINARY_DIR = /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/game.dir/depend.make
@@ -73,74 +73,74 @@ CMakeFiles/game.dir/codegen:
 .PHONY : CMakeFiles/game.dir/codegen
 
 CMakeFiles/game.dir/game.c.o: CMakeFiles/game.dir/flags.make
-CMakeFiles/game.dir/game.c.o: /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game.c
+CMakeFiles/game.dir/game.c.o: /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game.c
 CMakeFiles/game.dir/game.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/game.dir/game.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game.c.o -MF CMakeFiles/game.dir/game.c.o.d -o CMakeFiles/game.dir/game.c.o -c /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/game.dir/game.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game.c.o -MF CMakeFiles/game.dir/game.c.o.d -o CMakeFiles/game.dir/game.c.o -c /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game.c
 
 CMakeFiles/game.dir/game.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/game.dir/game.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game.c > CMakeFiles/game.dir/game.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game.c > CMakeFiles/game.dir/game.c.i
 
 CMakeFiles/game.dir/game.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/game.dir/game.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game.c -o CMakeFiles/game.dir/game.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game.c -o CMakeFiles/game.dir/game.c.s
 
 CMakeFiles/game.dir/game_aux.c.o: CMakeFiles/game.dir/flags.make
-CMakeFiles/game.dir/game_aux.c.o: /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_aux.c
+CMakeFiles/game.dir/game_aux.c.o: /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_aux.c
 CMakeFiles/game.dir/game_aux.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/game.dir/game_aux.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game_aux.c.o -MF CMakeFiles/game.dir/game_aux.c.o.d -o CMakeFiles/game.dir/game_aux.c.o -c /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_aux.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/game.dir/game_aux.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game_aux.c.o -MF CMakeFiles/game.dir/game_aux.c.o.d -o CMakeFiles/game.dir/game_aux.c.o -c /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_aux.c
 
 CMakeFiles/game.dir/game_aux.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/game.dir/game_aux.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_aux.c > CMakeFiles/game.dir/game_aux.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_aux.c > CMakeFiles/game.dir/game_aux.c.i
 
 CMakeFiles/game.dir/game_aux.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/game.dir/game_aux.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_aux.c -o CMakeFiles/game.dir/game_aux.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_aux.c -o CMakeFiles/game.dir/game_aux.c.s
 
 CMakeFiles/game.dir/game_ext.c.o: CMakeFiles/game.dir/flags.make
-CMakeFiles/game.dir/game_ext.c.o: /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_ext.c
+CMakeFiles/game.dir/game_ext.c.o: /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_ext.c
 CMakeFiles/game.dir/game_ext.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/game.dir/game_ext.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game_ext.c.o -MF CMakeFiles/game.dir/game_ext.c.o.d -o CMakeFiles/game.dir/game_ext.c.o -c /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_ext.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/game.dir/game_ext.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game_ext.c.o -MF CMakeFiles/game.dir/game_ext.c.o.d -o CMakeFiles/game.dir/game_ext.c.o -c /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_ext.c
 
 CMakeFiles/game.dir/game_ext.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/game.dir/game_ext.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_ext.c > CMakeFiles/game.dir/game_ext.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_ext.c > CMakeFiles/game.dir/game_ext.c.i
 
 CMakeFiles/game.dir/game_ext.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/game.dir/game_ext.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_ext.c -o CMakeFiles/game.dir/game_ext.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_ext.c -o CMakeFiles/game.dir/game_ext.c.s
 
 CMakeFiles/game.dir/queue/queue.c.o: CMakeFiles/game.dir/flags.make
-CMakeFiles/game.dir/queue/queue.c.o: /Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue/queue.c
+CMakeFiles/game.dir/queue/queue.c.o: /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue/queue.c
 CMakeFiles/game.dir/queue/queue.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/game.dir/queue/queue.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/queue/queue.c.o -MF CMakeFiles/game.dir/queue/queue.c.o.d -o CMakeFiles/game.dir/queue/queue.c.o -c /Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue/queue.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/game.dir/queue/queue.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/queue/queue.c.o -MF CMakeFiles/game.dir/queue/queue.c.o.d -o CMakeFiles/game.dir/queue/queue.c.o -c /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue/queue.c
 
 CMakeFiles/game.dir/queue/queue.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/game.dir/queue/queue.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue/queue.c > CMakeFiles/game.dir/queue/queue.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue/queue.c > CMakeFiles/game.dir/queue/queue.c.i
 
 CMakeFiles/game.dir/queue/queue.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/game.dir/queue/queue.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue/queue.c -o CMakeFiles/game.dir/queue/queue.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue/queue.c -o CMakeFiles/game.dir/queue/queue.c.s
 
 CMakeFiles/game.dir/game_tools.c.o: CMakeFiles/game.dir/flags.make
-CMakeFiles/game.dir/game_tools.c.o: /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_tools.c
+CMakeFiles/game.dir/game_tools.c.o: /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_tools.c
 CMakeFiles/game.dir/game_tools.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/game.dir/game_tools.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game_tools.c.o -MF CMakeFiles/game.dir/game_tools.c.o.d -o CMakeFiles/game.dir/game_tools.c.o -c /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_tools.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/game.dir/game_tools.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/game_tools.c.o -MF CMakeFiles/game.dir/game_tools.c.o.d -o CMakeFiles/game.dir/game_tools.c.o -c /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_tools.c
 
 CMakeFiles/game.dir/game_tools.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/game.dir/game_tools.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_tools.c > CMakeFiles/game.dir/game_tools.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_tools.c > CMakeFiles/game.dir/game_tools.c.i
 
 CMakeFiles/game.dir/game_tools.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/game.dir/game_tools.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_tools.c -o CMakeFiles/game.dir/game_tools.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_tools.c -o CMakeFiles/game.dir/game_tools.c.s
 
 # Object files for target game
 game_OBJECTS = \
@@ -160,7 +160,7 @@ libgame.a: CMakeFiles/game.dir/queue/queue.c.o
 libgame.a: CMakeFiles/game.dir/game_tools.c.o
 libgame.a: CMakeFiles/game.dir/build.make
 libgame.a: CMakeFiles/game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libgame.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libgame.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/game.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/game.dir/link.txt --verbose=$(VERBOSE)
 
@@ -173,6 +173,6 @@ CMakeFiles/game.dir/clean:
 .PHONY : CMakeFiles/game.dir/clean
 
 CMakeFiles/game.dir/depend:
-	cd /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ardatuzun/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles/game.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles/game.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/game.dir/depend
 

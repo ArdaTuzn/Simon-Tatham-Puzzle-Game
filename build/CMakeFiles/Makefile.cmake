@@ -7,11 +7,11 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/Users/ardatuzun/Simon-Tatham-Puzzle-Game/CMakeLists.txt"
+  "/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/CMakeLists.txt"
   "CMakeFiles/4.0.3/CMakeCCompiler.cmake"
   "CMakeFiles/4.0.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.0.3/CMakeSystem.cmake"
-  "/Users/ardatuzun/Simon-Tatham-Puzzle-Game/sdl2.cmake"
+  "/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/sdl2.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"

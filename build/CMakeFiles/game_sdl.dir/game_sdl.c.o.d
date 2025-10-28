@@ -1,5 +1,5 @@
 CMakeFiles/game_sdl.dir/game_sdl.c.o: \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_sdl.c \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_sdl.c \
   /opt/homebrew/include/SDL2/SDL.h /opt/homebrew/include/SDL2/SDL_main.h \
   /opt/homebrew/include/SDL2/SDL_stdinc.h \
   /opt/homebrew/include/SDL2/SDL_config.h \
@@ -220,4 +220,4 @@ CMakeFiles/game_sdl.dir/game_sdl.c.o: \
   /opt/homebrew/include/SDL2/SDL_image.h \
   /opt/homebrew/include/SDL2/SDL_ttf.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdbool.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/model.h
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/model.h

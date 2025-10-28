@@ -1,6 +1,6 @@
 CMakeFiles/game.dir/game_tools.c.o: \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_tools.c \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_tools.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_tools.c \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_tools.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdbool.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h \
@@ -41,11 +41,11 @@ CMakeFiles/game.dir/game_tools.c.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/secure/_stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/secure/_common.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_ext.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_aux.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_struct.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue/queue.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_ext.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_aux.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_struct.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue/queue.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_static_assert.h \

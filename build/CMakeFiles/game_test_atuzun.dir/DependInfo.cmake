@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_test_atuzun.c" "CMakeFiles/game_test_atuzun.dir/game_test_atuzun.c.o" "gcc" "CMakeFiles/game_test_atuzun.dir/game_test_atuzun.c.o.d"
+  "/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_test_atuzun.c" "CMakeFiles/game_test_atuzun.dir/game_test_atuzun.c.o" "gcc" "CMakeFiles/game_test_atuzun.dir/game_test_atuzun.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

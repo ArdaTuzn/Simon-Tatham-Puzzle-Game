@@ -1,6 +1,6 @@
 CMakeFiles/game_sdl.dir/model.c.o: \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/model.c \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/model.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/model.c \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/model.h \
   /opt/homebrew/include/SDL2/SDL.h /opt/homebrew/include/SDL2/SDL_main.h \
   /opt/homebrew/include/SDL2/SDL_stdinc.h \
   /opt/homebrew/include/SDL2/SDL_config.h \
@@ -219,9 +219,9 @@ CMakeFiles/game_sdl.dir/model.c.o: \
   /opt/homebrew/include/SDL2/SDL_locale.h \
   /opt/homebrew/include/SDL2/SDL_misc.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdbool.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_aux.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_tools.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_ext.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_aux.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_tools.h \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_ext.h \
   /opt/homebrew/include/SDL2/SDL_image.h \
   /opt/homebrew/include/SDL2/SDL_ttf.h

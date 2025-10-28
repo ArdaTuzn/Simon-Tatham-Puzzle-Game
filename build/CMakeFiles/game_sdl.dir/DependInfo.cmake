@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/ardatuzun/Simon-Tatham-Puzzle-Game/game_sdl.c" "CMakeFiles/game_sdl.dir/game_sdl.c.o" "gcc" "CMakeFiles/game_sdl.dir/game_sdl.c.o.d"
-  "/Users/ardatuzun/Simon-Tatham-Puzzle-Game/model.c" "CMakeFiles/game_sdl.dir/model.c.o" "gcc" "CMakeFiles/game_sdl.dir/model.c.o.d"
+  "/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/game_sdl.c" "CMakeFiles/game_sdl.dir/game_sdl.c.o" "gcc" "CMakeFiles/game_sdl.dir/game_sdl.c.o.d"
+  "/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/model.c" "CMakeFiles/game_sdl.dir/model.c.o" "gcc" "CMakeFiles/game_sdl.dir/model.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

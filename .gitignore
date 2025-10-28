@@ -1,0 +1,46 @@
+# --- OS / IDE ---
+.DS_Store
+.vscode/
+*.log
+
+# --- C / C++ build artifacts ---
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+*.dSYM/
+
+# --- CMake ---
+build/
+Build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+CTestCustom.cmake
+Makefile
+compile_commands.json
+Testing/
+_deps/
+
+# --- Project-specific executables and libraries ---
+game
+game_sdl
+game_solve
+game_text
+game_test_*
+libgame.a
+bin/
+lib/
+
+# --- Temporary / coverage files ---
+*.tmp
+*.gcda
+*.gcno
+*.gcov

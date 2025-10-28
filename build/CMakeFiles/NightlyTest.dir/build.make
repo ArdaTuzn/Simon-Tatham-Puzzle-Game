@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ardatuzun/Simon-Tatham-Puzzle-Game
+CMAKE_SOURCE_DIR = /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build
+CMAKE_BINARY_DIR = /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build
 
 # Utility rule file for NightlyTest.
 
@@ -85,6 +85,6 @@ CMakeFiles/NightlyTest.dir/clean:
 .PHONY : CMakeFiles/NightlyTest.dir/clean
 
 CMakeFiles/NightlyTest.dir/depend:
-	cd /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ardatuzun/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Simon-Tatham-Puzzle-Game/build/CMakeFiles/NightlyTest.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/build/CMakeFiles/NightlyTest.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/NightlyTest.dir/depend
 

@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue -I/opt/homebrew/include/SDL2
+C_INCLUDES = -I/Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue -I/opt/homebrew/include/SDL2
 
 C_FLAGSarm64 = -Wall -std=c99 -arch arm64
 

@@ -1,5 +1,5 @@
 CMakeFiles/game.dir/queue/queue.c.o: \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue/queue.c \
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue/queue.c \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h \
@@ -78,4 +78,4 @@ CMakeFiles/game.dir/queue/queue.c.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_abort.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_dev_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_mode_t.h \
-  /Users/ardatuzun/Simon-Tatham-Puzzle-Game/queue/queue.h
+  /Users/ardatuzun/Desktop/Simon-Tatham-Puzzle-Game/queue/queue.h
