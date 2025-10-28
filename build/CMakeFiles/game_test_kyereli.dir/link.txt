@@ -1,1 +1,0 @@
-/usr/bin/cc -Wall -std=c99 -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/game_test_kyereli.dir/game_test_kyereli.c.o -o game_test_kyereli  libgame.a
