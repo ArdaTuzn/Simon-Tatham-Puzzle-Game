@@ -46,12 +46,14 @@ Both have half-edges ->	MATCH
 Only one has a half-edge ->	MISMATCH
 Neither has a half-edge	-> NOEDGE
 
-Terminal Representation:
-Shape	North	East	South	West
-endpoint ^	     > 	      v	     <
-segment	 `	     `	      -	     `
-corner	 └	     ┌	      ┐	     ┘
-tee	     ┴	     ├	      ┬	     ┤
+Terminal Representations:
+Shapes:	endpoint, segment, corner, tee	  
+Direction: North, East, South, West
+Respectfully: Shapes,Direction:
+^, >, v, <
+|, -, |, -
+└, ┌, ┐, ┘
+┴, ├, ┬, ┤
 
 We also added a shape called "Cross" which has the representation: + 
 
@@ -72,3 +74,4 @@ game_sdl – GUI version using SDL
 
 Error Handling
 Library functions assume valid arguments; input validation is done at a higher level. To catch errors during development, the assert() macro is used. Assertions are removed in RELEASE mode for performance.
+
