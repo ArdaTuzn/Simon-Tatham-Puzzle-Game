@@ -71,7 +71,26 @@ game_text – play in the terminal
 game_test – run unit tests
 game_solve – auto-solve puzzles
 game_sdl – GUI version using SDL
+game_random - Create a randomly generated puzzle by specfying the dimensions
 
 Error Handling
 Library functions assume valid arguments; input validation is done at a higher level. To catch errors during development, the assert() macro is used. Assertions are removed in RELEASE mode for performance.
+
+Build and Run  
+To compile the project in the terminal:
+
+mkdir build
+cd build
+cmake ..
+make 
+
+Executables will be created inside the 'build/' directory.  
+You can then run them as:
+
+./game_text (for text representation)
+./game_solve
+./game_sdl (for graphical sdl representation)
+./game_random 
+./game_test
+
 
