@@ -81,9 +81,9 @@ Library functions assume valid arguments; input validation is done at a higher l
 Build and Run  
 To compile the project in the terminal:
 
-mkdir build
-cd build
-cmake ..
+mkdir build;
+cd build;
+cmake ..;
 make 
 
 Executables will be created inside the 'build/' directory.  
@@ -94,6 +94,7 @@ You can then run them as:
 ./game_sdl (for graphical sdl representation)
 ./game_random 
 ./game_test
+
 
 
 
