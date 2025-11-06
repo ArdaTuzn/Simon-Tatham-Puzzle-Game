@@ -81,19 +81,23 @@ Library functions assume valid arguments; input validation is done at a higher l
 Build and Run  
 To compile the project in the terminal:
 
+To compile the project in a terminal (The operating system we used was Linux):
+
+```bash
 mkdir build;
 cd build;
 cmake ..;
-make 
+make;
 
 Executables will be created inside the 'build/' directory.  
 You can then run them as:
 
-./game_text (for text representation)
-./game_solve
-./game_sdl (for graphical sdl representation)
-./game_random 
-./game_test
+./game_text     # text-based interface
+./game_solve    # automatic solver
+./game_sdl      # graphical SDL version
+./game_random   # random puzzle generator
+./game_test     # unit tests
+
 
 
 
